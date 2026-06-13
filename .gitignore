@@ -1,0 +1,19 @@
+# Terraform — state pode conter dados sensíveis; nunca versionar
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+.terraform/
+crash.log
+crash.*.log
+
+# Variáveis com possíveis segredos
+*.tfvars
+*.tfvars.json
+!example.tfvars
+
+# Credenciais / ambiente
+.env
+*.pem
+
+# SO / editor
+.DS_Store

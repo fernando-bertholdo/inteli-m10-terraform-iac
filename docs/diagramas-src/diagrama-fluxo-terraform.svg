@@ -1,0 +1,95 @@
+<svg viewBox="0 0 1600 700" width="1600" height="700" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="aG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#666666"/>
+    </marker>
+    <marker id="aP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5C33A2"/>
+    </marker>
+    <marker id="aO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FF9900"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="700" fill="#FFFFFF"/>
+
+  <text x="800" y="52" text-anchor="middle" font-size="32" font-weight="bold" fill="#333333">Fluxo Terraform — Write → Plan → Apply</text>
+
+  <!-- ===================== COLUNA 1: WRITE ===================== -->
+  <rect x="40" y="90" width="430" height="560" rx="12" fill="#F7F3FB" stroke="#D9CCEC" stroke-width="1.5"/>
+  <rect x="175" y="108" width="160" height="40" rx="20" fill="#5C33A2"/>
+  <text x="255" y="135" text-anchor="middle" font-size="19" font-weight="bold" fill="#FFFFFF">1 · WRITE</text>
+
+  <rect x="70" y="240" width="370" height="240" rx="8" fill="#FFFFFF" stroke="#7B42BC" stroke-width="2.5"/>
+  <text x="255" y="282" text-anchor="middle" font-size="21" font-weight="bold" fill="#333333">Arquivos .tf</text>
+  <text x="255" y="308" text-anchor="middle" font-size="16" fill="#666666">(HCL declarativo)</text>
+
+  <rect x="95" y="322" width="320" height="62" rx="6" fill="#F7F3FB" stroke="#7B42BC" stroke-width="1.5"/>
+  <text x="255" y="347" text-anchor="middle" font-size="17" font-weight="bold" fill="#5C33A2">terraform.tf</text>
+  <text x="255" y="371" text-anchor="middle" font-size="16" fill="#666666">providers</text>
+
+  <rect x="95" y="400" width="320" height="62" rx="6" fill="#F7F3FB" stroke="#7B42BC" stroke-width="1.5"/>
+  <text x="255" y="425" text-anchor="middle" font-size="17" font-weight="bold" fill="#5C33A2">main.tf</text>
+  <text x="255" y="449" text-anchor="middle" font-size="16" fill="#666666">provider + data + resource</text>
+
+  <!-- seta WRITE -> PLAN -->
+  <line x1="476" y1="370" x2="532" y2="370" stroke="#666666" stroke-width="4" marker-end="url(#aG)"/>
+
+  <!-- ===================== COLUNA 2: PLAN ===================== -->
+  <rect x="540" y="90" width="500" height="560" rx="12" fill="#F7F3FB" stroke="#D9CCEC" stroke-width="1.5"/>
+  <rect x="710" y="108" width="160" height="40" rx="20" fill="#5C33A2"/>
+  <text x="790" y="135" text-anchor="middle" font-size="19" font-weight="bold" fill="#FFFFFF">2 · PLAN</text>
+
+  <rect x="590" y="164" width="400" height="64" rx="8" fill="#FFFFFF" stroke="#5C33A2" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="790" y="190" text-anchor="middle" font-size="18" font-weight="bold" fill="#5C33A2">Terraform Registry</text>
+  <text x="790" y="214" text-anchor="middle" font-size="16" fill="#666666">provider hashicorp/aws</text>
+
+  <line x1="790" y1="228" x2="790" y2="256" stroke="#5C33A2" stroke-width="2.5" marker-end="url(#aP)"/>
+
+  <rect x="640" y="262" width="300" height="54" rx="8" fill="#7B42BC"/>
+  <text x="790" y="296" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFFFFF">terraform init</text>
+
+  <text x="790" y="340" text-anchor="middle" font-size="16" font-style="italic" fill="#666666">grava .terraform.lock.hcl</text>
+
+  <line x1="790" y1="354" x2="790" y2="380" stroke="#5C33A2" stroke-width="2.5" marker-end="url(#aP)"/>
+
+  <rect x="640" y="386" width="300" height="54" rx="8" fill="#7B42BC"/>
+  <text x="790" y="420" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFFFFF">terraform validate</text>
+
+  <line x1="790" y1="444" x2="790" y2="470" stroke="#5C33A2" stroke-width="2.5" marker-end="url(#aP)"/>
+
+  <rect x="640" y="476" width="300" height="54" rx="8" fill="#7B42BC"/>
+  <text x="790" y="510" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFFFFF">terraform plan</text>
+
+  <text x="790" y="560" text-anchor="middle" font-size="16" fill="#666666">compara: config × state × mundo real</text>
+  <text x="790" y="586" text-anchor="middle" font-size="16" fill="#666666">→ diff ( + criar / ~ alterar / − destruir )</text>
+
+  <!-- seta PLAN -> APPLY -->
+  <line x1="1046" y1="370" x2="1102" y2="370" stroke="#666666" stroke-width="4" marker-end="url(#aG)"/>
+
+  <!-- ===================== COLUNA 3: APPLY ===================== -->
+  <rect x="1110" y="90" width="450" height="560" rx="12" fill="#F7F3FB" stroke="#D9CCEC" stroke-width="1.5"/>
+  <rect x="1255" y="108" width="160" height="40" rx="20" fill="#5C33A2"/>
+  <text x="1335" y="135" text-anchor="middle" font-size="19" font-weight="bold" fill="#FFFFFF">3 · APPLY</text>
+
+  <rect x="1185" y="180" width="300" height="70" rx="8" fill="#5C33A2"/>
+  <text x="1335" y="211" text-anchor="middle" font-size="20" font-weight="bold" fill="#FFFFFF">terraform apply</text>
+  <text x="1335" y="237" text-anchor="middle" font-size="16" fill="#E8DFF5">confirma com: yes</text>
+
+  <!-- seta apply -> EC2 -->
+  <line x1="1335" y1="250" x2="1335" y2="312" stroke="#FF9900" stroke-width="3" marker-end="url(#aO)"/>
+
+  <rect x="1160" y="318" width="350" height="100" rx="8" fill="#FFE9CC" stroke="#FF9900" stroke-width="3"/>
+  <rect x="1176" y="332" width="58" height="26" rx="4" fill="#FF9900"/>
+  <text x="1205" y="351" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">AWS</text>
+  <text x="1335" y="370" text-anchor="middle" font-size="20" font-weight="bold" fill="#7A4500">EC2 provisionada</text>
+  <text x="1335" y="398" text-anchor="middle" font-size="16" fill="#666666">infraestrutura real em us-east-1</text>
+
+  <!-- seta apply -> tfstate -->
+  <path d="M 1185 215 L 1140 215 L 1140 545 L 1152 545" fill="none" stroke="#5C33A2" stroke-width="2.5" marker-end="url(#aP)"/>
+
+  <rect x="1160" y="490" width="350" height="110" rx="8" fill="#FFFFFF" stroke="#5C33A2" stroke-width="2.5" stroke-dasharray="7 5"/>
+  <text x="1335" y="527" text-anchor="middle" font-size="19" font-weight="bold" fill="#5C33A2">terraform.tfstate</text>
+  <text x="1335" y="555" text-anchor="middle" font-size="16" fill="#333333">fonte de verdade do estado</text>
+  <text x="1335" y="581" text-anchor="middle" font-size="16" fill="#666666">sensível — fica fora do Git</text>
+</svg>

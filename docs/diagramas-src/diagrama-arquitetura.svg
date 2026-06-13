@@ -1,0 +1,77 @@
+<svg viewBox="0 0 1600 900" width="1600" height="900" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="aO" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FF9900"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#FFFFFF"/>
+
+  <text x="800" y="52" text-anchor="middle" font-size="32" font-weight="bold" fill="#333333">Infraestrutura provisionada (us-east-1)</text>
+
+  <!-- ===================== PAINEL ESQUERDO ===================== -->
+  <rect x="40" y="90" width="730" height="730" rx="12" fill="#FBFBFD" stroke="#DDDDDD" stroke-width="1.5"/>
+  <text x="405" y="134" text-anchor="middle" font-size="22" font-weight="bold" fill="#333333">1 · learn-terraform-aws (tutorial oficial)</text>
+
+  <!-- VPC esquerda -->
+  <rect x="80" y="170" width="650" height="400" rx="10" fill="#FFF8EE" stroke="#FF9900" stroke-width="2.5"/>
+  <rect x="100" y="190" width="58" height="26" rx="4" fill="#FF9900"/>
+  <text x="129" y="209" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">AWS</text>
+  <text x="172" y="209" font-size="18" font-weight="bold" fill="#7A4500">VPC default — us-east-1</text>
+
+  <!-- EC2 esquerda -->
+  <rect x="165" y="300" width="480" height="200" rx="8" fill="#FFFFFF" stroke="#FF9900" stroke-width="2.5"/>
+  <text x="405" y="342" text-anchor="middle" font-size="20" font-weight="bold" fill="#333333">EC2 — aws_instance.app_server</text>
+  <text x="405" y="372" text-anchor="middle" font-size="17" fill="#666666">t3.micro · Ubuntu 24.04 LTS</text>
+  <text x="405" y="398" text-anchor="middle" font-size="16" fill="#666666">AMI resolvida via data.aws_ami</text>
+  <rect x="255" y="424" width="300" height="44" rx="22" fill="#FFF1DC" stroke="#FF9900" stroke-width="1.5"/>
+  <text x="405" y="452" text-anchor="middle" font-size="16" fill="#7A4500">Name = learn-terraform</text>
+
+  <text x="405" y="700" text-anchor="middle" font-size="16" font-style="italic" fill="#666666">Resultado do tutorial “Build Infrastructure” (HashiCorp Developer)</text>
+
+  <!-- ===================== PAINEL DIREITO ===================== -->
+  <rect x="830" y="90" width="730" height="730" rx="12" fill="#FBFBFD" stroke="#DDDDDD" stroke-width="1.5"/>
+  <text x="1195" y="134" text-anchor="middle" font-size="22" font-weight="bold" fill="#333333">2 · extra-runner-px4 (ir além)</text>
+
+  <!-- VPC direita -->
+  <rect x="870" y="170" width="650" height="400" rx="10" fill="#FFF8EE" stroke="#FF9900" stroke-width="2.5"/>
+  <rect x="890" y="190" width="58" height="26" rx="4" fill="#FF9900"/>
+  <text x="919" y="209" text-anchor="middle" font-size="16" font-weight="bold" fill="#FFFFFF">AWS</text>
+  <text x="962" y="209" font-size="18" font-weight="bold" fill="#7A4500">VPC default — us-east-1</text>
+
+  <!-- Security Group -->
+  <rect x="905" y="290" width="240" height="200" rx="8" fill="#FFFFFF" stroke="#FF9900" stroke-width="2.5"/>
+  <text x="1025" y="330" text-anchor="middle" font-size="19" font-weight="bold" fill="#333333">Security Group</text>
+  <text x="1025" y="360" text-anchor="middle" font-size="16" fill="#666666">aws_security_group</text>
+  <text x="1025" y="384" text-anchor="middle" font-size="16" fill="#666666">.runner_ssh</text>
+  <rect x="915" y="412" width="220" height="40" rx="20" fill="#FFF1DC" stroke="#FF9900" stroke-width="1.5"/>
+  <text x="1025" y="437" text-anchor="middle" font-size="16" fill="#7A4500">ingress 22/tcp (SSH)</text>
+
+  <!-- seta SG -> EC2 -->
+  <line x1="1149" y1="390" x2="1189" y2="390" stroke="#FF9900" stroke-width="3" marker-end="url(#aO)"/>
+
+  <!-- EC2 direita -->
+  <rect x="1195" y="290" width="315" height="200" rx="8" fill="#FFFFFF" stroke="#FF9900" stroke-width="2.5"/>
+  <text x="1352" y="330" text-anchor="middle" font-size="18" font-weight="bold" fill="#333333">aws_instance.px4_runner</text>
+  <text x="1352" y="360" text-anchor="middle" font-size="16" fill="#666666">t3.micro · Ubuntu 24.04</text>
+  <text x="1352" y="384" text-anchor="middle" font-size="16" fill="#666666">user_data: Docker + Compose</text>
+  <rect x="1234" y="412" width="236" height="40" rx="20" fill="#FFF1DC" stroke="#FF9900" stroke-width="1.5"/>
+  <text x="1352" y="437" text-anchor="middle" font-size="16" fill="#7A4500">Name = px4-sitl-runner</text>
+
+  <!-- conexao tracejada bidirecional EC2 <-> GitHub Actions -->
+  <line x1="1352" y1="508" x2="1352" y2="642" stroke="#2088FF" stroke-width="3" stroke-dasharray="9 6"/>
+  <polygon points="1346,506 1358,506 1352,494" fill="#2088FF"/>
+  <polygon points="1346,644 1358,644 1352,656" fill="#2088FF"/>
+
+  <text x="1330" y="596" text-anchor="end" font-size="16" fill="#666666">papel do runner srv-simulador</text>
+  <text x="1330" y="620" text-anchor="end" font-size="16" fill="#666666">(repo do professor,</text>
+  <text x="1330" y="644" text-anchor="end" font-size="16" fill="#666666">branch feat/pr8-terraform-runner)</text>
+
+  <!-- GitHub Actions -->
+  <rect x="940" y="660" width="520" height="110" rx="8" fill="#EAF3FF" stroke="#2088FF" stroke-width="2.5"/>
+  <text x="1200" y="704" text-anchor="middle" font-size="20" font-weight="bold" fill="#1467C8">GitHub Actions</text>
+  <text x="1200" y="734" text-anchor="middle" font-size="17" fill="#333333">runs-on: [self-hosted, px4-sitl]</text>
+
+  <!-- rodape -->
+  <text x="800" y="862" text-anchor="middle" font-size="17" fill="#666666">Provisionado via Terraform — conta AWS (Free Tier 2025)</text>
+</svg>
