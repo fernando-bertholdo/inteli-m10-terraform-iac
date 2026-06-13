@@ -31,7 +31,7 @@
 
   <!-- ===================== PAINEL DIREITO ===================== -->
   <rect x="830" y="90" width="730" height="730" rx="12" fill="#FBFBFD" stroke="#DDDDDD" stroke-width="1.5"/>
-  <text x="1195" y="134" text-anchor="middle" font-size="22" font-weight="bold" fill="#333333">2 · extra-runner-px4 (ir além)</text>
+  <text x="1195" y="134" text-anchor="middle" font-size="22" font-weight="bold" fill="#333333">2 · px4-runner (runner self-hosted CI/CD)</text>
 
   <!-- VPC direita -->
   <rect x="870" y="170" width="650" height="400" rx="10" fill="#FFF8EE" stroke="#FF9900" stroke-width="2.5"/>

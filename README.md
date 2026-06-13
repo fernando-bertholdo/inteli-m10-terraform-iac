@@ -4,7 +4,7 @@
 > Aula 2026-06-11 · "Como dialogar com o seu ambiente cloud?" · Prof. José Romualdo da Costa Filho
 > Autor: Fernando Bertholdo · Turma 2026-1B-T13
 
-Este repositório provisiona infraestrutura na AWS usando **Terraform** (Infraestrutura como Código), seguindo o tutorial oficial *Get Started — AWS* da HashiCorp. Além do tutorial, inclui um **provisionamento extra** que aplica o conceito ao contexto do projeto do módulo: o runner self-hosted do pipeline de CI/CD do drone PX4.
+Este repositório provisiona infraestrutura na AWS usando **Terraform** (Infraestrutura como Código). O trabalho se organiza em duas partes: a primeira segue o tutorial oficial *Get Started — AWS* da HashiCorp; a segunda aplica o mesmo conceito ao contexto do projeto do módulo, provisionando o runner self-hosted do pipeline de CI/CD do drone PX4.
 
 ## O que é Infraestrutura como Código (IaC)
 
@@ -21,7 +21,7 @@ inteli-m10-terraform-iac/
 ├── learn-terraform-aws/        # 1. Tutorial oficial HashiCorp (EC2 única)
 │   ├── terraform.tf            #    bloco terraform + required_providers
 │   └── main.tf                 #    provider + data source AMI + resource EC2
-├── extra-runner-px4/           # 2. EXTRA: runner self-hosted do pipeline PX4
+├── px4-runner/                 # 2. Runner self-hosted do pipeline PX4 (CI/CD)
 │   ├── terraform.tf
 │   ├── main.tf                 #    security group + EC2 com Docker via user_data
 │   └── outputs.tf              #    id, ip público e AMI como outputs
@@ -96,8 +96,8 @@ Esta seção evidencia, conforme exigido, **o que foi efetivamente criado na AWS
 | Recurso | ID | Tipo | AMI | AZ | Origem |
 |---|---|---|---|---|---|
 | EC2 `app_server` | `i-0191519b051c51bef` | t3.micro | `ami-0f8a61b66d1accaee` (Ubuntu 24.04) | us-east-1c | Tutorial (Parte 1) |
-| EC2 `px4_runner` | `i-00cdaa1ceb656bbba` | t3.micro | `ami-0f8a61b66d1accaee` (Ubuntu 24.04) | us-east-1c | Extra (Parte 3) |
-| Security Group `px4-runner-ssh` | `sg-00adda87cfd5c035d` | — | — | — | Extra (Parte 3) |
+| EC2 `px4_runner` | `i-00cdaa1ceb656bbba` | t3.micro | `ami-0f8a61b66d1accaee` (Ubuntu 24.04) | us-east-1c | Parte 3 |
+| Security Group `px4-runner-ssh` | `sg-00adda87cfd5c035d` | — | — | — | Parte 3 |
 
 Verificação direta pela AWS CLI, confirmando as duas instâncias em execução:
 
@@ -110,9 +110,9 @@ No **console gráfico da AWS** (EC2 → Instances), na conta `245439046799`, as 
 
 ---
 
-## Parte 3 — EXTRA: runner self-hosted do pipeline PX4 (`extra-runner-px4/`)
+## Parte 3 — Runner self-hosted do pipeline PX4 (`px4-runner/`)
 
-> **Ir além:** este bloco conecta o tutorial ao projeto real do módulo. O grupo usa um pipeline de CI/CD que roda simulações do drone **PX4 SITL** em um runner *self-hosted* (a VM `srv-simulador`). A decisão por self-hosted está documentada nos ADRs 001/006 do repositório do professor ([`josercf/inteli-px4-cicd-demo`](https://github.com/josercf/inteli-px4-cicd-demo), branch `feat/pr8-terraform-runner`): o runner GitHub-hosted cancelava o job de simulação; self-hosted com cache local da imagem SITL resolveu. Aqui, **provisiono via IaC o papel dessa VM**, em vez de configurá-la na mão.
+Esta parte conecta o tutorial ao projeto real do módulo. O grupo usa um pipeline de CI/CD que roda simulações do drone **PX4 SITL** em um runner *self-hosted* (a VM `srv-simulador`). A decisão por self-hosted está documentada nos ADRs 001/006 do repositório de referência do pipeline ([`josercf/inteli-px4-cicd-demo`](https://github.com/josercf/inteli-px4-cicd-demo), branch `feat/pr8-terraform-runner`): o runner GitHub-hosted cancelava o job de simulação; self-hosted com cache local da imagem SITL resolveu. Aqui o **papel dessa VM é provisionado via IaC**, em vez de configurado manualmente.
 
 ![Arquitetura provisionada](docs/img/diagrama-arquitetura.png)
 
@@ -129,17 +129,17 @@ terraform validate  # Success! The configuration is valid.
 terraform apply     # cria SG + EC2
 ```
 
-![terraform init (extra)](docs/img/07-extra-init.png)
+![terraform init (px4-runner)](docs/img/07-px4-init.png)
 
-![terraform validate (extra)](docs/img/08-extra-validate.png)
+![terraform validate (px4-runner)](docs/img/08-px4-validate.png)
 
-![terraform apply (extra)](docs/img/09-extra-apply.png)
+![terraform apply (px4-runner)](docs/img/09-px4-apply.png)
 
 O `apply` criou os dois recursos e expôs os outputs definidos em `outputs.tf`:
 
-![terraform state list (extra)](docs/img/10-extra-statelist.png)
+![terraform state list (px4-runner)](docs/img/10-px4-statelist.png)
 
-![terraform output (extra)](docs/img/11-extra-output.png)
+![terraform output (px4-runner)](docs/img/11-px4-output.png)
 
 ---
 

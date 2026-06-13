@@ -1,7 +1,7 @@
-# EXTRA ("ir além"): provisiona via IaC o papel do runner self-hosted do
-# pipeline PX4 SITL do módulo (espelha a VM srv-simulador usada no repo
-# josercf/inteli-px4-cicd-demo — branch feat/pr8-terraform-runner, criada
-# exatamente para este passo). A decisão por runner self-hosted está
+# Provisiona via IaC o papel do runner self-hosted do pipeline PX4 SITL do
+# módulo (espelha a VM srv-simulador usada no repo de referência
+# josercf/inteli-px4-cicd-demo — branch feat/pr8-terraform-runner). A
+# decisão por runner self-hosted está
 # documentada nos ADRs 001/006 daquele repo: GitHub-hosted cancelava o job
 # de simulação; self-hosted + cache local da imagem SITL resolveu.
 
